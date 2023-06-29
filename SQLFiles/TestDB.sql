@@ -503,6 +503,33 @@ ORDER BY a.AccommodationName;
 
 -- Selects all columns of the table
 SELECT *
+FROM AccommodationPicture
+-- Shows the three first records
+LIMIT 3;
+
+-- Returns the number of
+-- accommodations' pictures
+SELECT COUNT(*)
+-- Rename the column
+AS NumberOfPictures
+FROM AccommodationPicture;
+
+-- Selection of certain columns
+SELECT T_a.AccommodationName, t_a.NightPrice,
+       ad.Country, ap.PictureLink
+-- The table "T_a" is created from the table
+-- "Accommodation". It has the information
+-- that meets the condition
+FROM (SELECT *
+         FROM Accommodation
+         WHERE MaxGuest > 5) AS T_a
+JOIN Address ad
+ON ad.AddressID = T_a.AddressID
+JOIN AccommodationPicture ap
+ON T_a.AccommodationID = ap.AccommodationID;
+
+-- Selects all columns of the table
+SELECT *
 FROM Reservation
 -- Shows the three first records
 LIMIT 3;

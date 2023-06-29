@@ -1983,9 +1983,9 @@ INSERT INTO `AccommodationPicture` VALUES (1,'Auvergnate1', 'https://github.com/
 INSERT INTO `AccommodationPicture` VALUES (2,'Auvergnate2', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/1Host_Florent/1The%20Auvergnate/59dad5ff-52ab-4018-a6ae-73ad436d8a53.webp', 1);
 INSERT INTO `AccommodationPicture` VALUES (3,'Auvergnate3', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/1Host_Florent/1The%20Auvergnate/824bdb2f-13f4-4c3f-8677-5f0796ea43da.webp', 1);
 INSERT INTO `AccommodationPicture` VALUES (4,'Auvergnate4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
-INSERT INTO `AccommodationPicture` VALUES (5,'Auvergnate4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
-INSERT INTO `AccommodationPicture` VALUES (6,'Auvergnate4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
-INSERT INTO `AccommodationPicture` VALUES (7,'Auvergnate4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
+INSERT INTO `AccommodationPicture` VALUES (5,'Auvergnate5', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
+INSERT INTO `AccommodationPicture` VALUES (6,'Auvergnate6', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
+INSERT INTO `AccommodationPicture` VALUES (7,'Auvergnate7', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 1);
 INSERT INTO `AccommodationPicture` VALUES (8,'The getaway1', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/1Host_Florent/2The%20getaway%20at%20the%20end%20of%20the%20village/0a982999-e75b-4165-840e-46beb8521465.webp', 2);
 INSERT INTO `AccommodationPicture` VALUES (9,'The getaway2', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/1Host_Florent/2The%20getaway%20at%20the%20end%20of%20the%20village/0fddcd2a-e555-4106-b07c-7e7c16212be2.webp', 2);
 INSERT INTO `AccommodationPicture` VALUES (10,'The getaway3', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/1Host_Florent/2The%20getaway%20at%20the%20end%20of%20the%20village/1fa36b72-0c81-4029-b068-be29e541a7ce.webp', 2);
@@ -2009,9 +2009,9 @@ INSERT INTO `AccommodationPicture` VALUES (27,'Sea View House1', 'https://github
 INSERT INTO `AccommodationPicture` VALUES (28,'Sea View House2', 'https://github.com/aijimenez/DataBaseSQL/blob/main/Pictures_Accomodations/7Host_Murat/Sea%20Wiev%20Houses/4e518080-500e-43c9-ab7c-eead07d5d849.jpeg', 5);
 INSERT INTO `AccommodationPicture` VALUES (29,'Sea View House3', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/7Host_Murat/Sea%20Wiev%20Houses/0f35538e-be50-40be-865f-18211ca3f8d3.webp', 5);
 INSERT INTO `AccommodationPicture` VALUES (30,'Sea View House4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
-INSERT INTO `AccommodationPicture` VALUES (31,'Sea View House4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
-INSERT INTO `AccommodationPicture` VALUES (32,'Sea View House4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
-INSERT INTO `AccommodationPicture` VALUES (33,'Sea View House4', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
+INSERT INTO `AccommodationPicture` VALUES (31,'Sea View House5', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
+INSERT INTO `AccommodationPicture` VALUES (32,'Sea View House6', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
+INSERT INTO `AccommodationPicture` VALUES (33,'Sea View House7', 'https://www.airbnb.com/rooms/6&alItem=1016969341', 5);
 INSERT INTO `AccommodationPicture` VALUES (34,'Garden Room 1', 'https://github.com/aijimenez/DataBaseSQL/blob/main/Pictures_Accomodations/7Host_Murat/Garden%20Room/38817921-4dda-418c-aea3-227f57b4d440.jpg', 6);
 INSERT INTO `AccommodationPicture` VALUES (35,'Garden Room 2', 'https://github.com/aijimenez/DataBaseSQL/blob/main/Pictures_Accomodations/7Host_Murat/Garden%20Room/56234195-5617-4003-b372-5bc19b68880c.jpg', 6);
 INSERT INTO `AccommodationPicture` VALUES (36,'Garden Room 3', 'https://github.com/aijimenez/DataBaseSQL/blob/main/Pictures_Accomodations/7Host_Murat/Garden%20Room/9532b04f-9dd2-4a9e-b428-59d04b19ba65.jpg', 6);
