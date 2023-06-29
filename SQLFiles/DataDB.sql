@@ -66,7 +66,7 @@ INSERT INTO `AccountPhoto` VALUES (7,'Murat', 'https://github.com/aijimenez/Data
 INSERT INTO `AccountPhoto` VALUES (8,'Lucile', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/8Guest_Lucile/1f9add24-405b-4221-a0f2-3c84708eb66f.webp', 8);
 INSERT INTO `AccountPhoto` VALUES (9,'Long', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/9Guest_Long/0d714197-ce08-4752-beb3-100b1756cd7c.webp', 9);
 INSERT INTO `AccountPhoto` VALUES (10,'Renato', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/10Host_GuestRenato/d7566660-6675-4aaa-8df3-2e0816ddcee1.webp', 10);
-INSERT INTO `AccountPhoto` VALUES (11,'Mayara', 'https://githubt.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/11Guest_Mayara/85c03a1d-a05d-4a1a-9ed3-0d79e3b7adcd.webp', 11);
+INSERT INTO `AccountPhoto` VALUES (11,'Mayara', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/11Guest_Mayara/85c03a1d-a05d-4a1a-9ed3-0d79e3b7adcd.webp', 11);
 INSERT INTO `AccountPhoto` VALUES (12,'Laura', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/12Guest_Laura/ef90d5c0-4b1a-442d-a627-e7757c945365.webp', 12);
 INSERT INTO `AccountPhoto` VALUES (13,'Denise', 'https://github.com/aijimenez/DataBaseSQL/raw/main/Pictures_Accomodations/13Guest_Denise/3b7269a3-abab-4f73-852f-ee15a209fe71.webp', 13);
 INSERT INTO `AccountPhoto` VALUES (14,'Marcos', 'https://github.com/aijimenez/DataBaseSQL/blob/main/Pictures_Accomodations/14Guest_Marcos/93ef1f88-f25d-40ce-9646-6e294abbe5d6.jpg', 14);

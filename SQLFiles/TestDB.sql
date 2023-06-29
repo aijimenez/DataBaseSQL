@@ -39,11 +39,37 @@ WHERE o.OfficialIdentificationID = 5
 -- Sorts the records in reference to the column
 ORDER BY DateCreated;
 
+-- Selects all columns of the table "AccountPhoto"
+SELECT *
+FROM AccountPhoto
+-- Shows the first five records
+LIMIT 5;
+
+-- Gives back the number of users' photos
+SELECT COUNT(*)
+-- Rename the column
+AS NumberOfPhotos
+FROM AccountPhoto;
+
+-- Selection of certain columns
+SELECT a.FirstName, a.LastName, a.AccountEmail,
+       o.OfficialIdentification, ap.PhotoLink
+-- AS rename the tables
+FROM Account AS a
+-- Allows you to extract data from the tables with
+-- the logical statement ON to combine the tables
+JOIN OfficialIdentificationType As o
+ON o.OfficialIdentificationID = a.OfficialIdentificationID
+JOIN AccountPhoto ap
+ON a.AccountID = ap.AccountID
+-- Displays the records that meet the condition
+WHERE o.OfficialIdentificationID = 5;
+
 -- Selects all columns of the table "Language"
 SELECT *
 FROM Language;
 
--- Gives back the number of users in the "Language" table
+-- Gives back the number of languages
 SELECT COUNT(LanguageID)
 -- Rename the column
 AS NumberOfLanguages
