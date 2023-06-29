@@ -113,6 +113,12 @@ FROM Host
 -- Shows the first record
 LIMIT 1;
 
+-- Returns the number of hosts
+SELECT COUNT(*)
+-- Rename the column
+AS NumberOfHosts
+FROM Host;
+
 -- Select the columns of the tables "Account" and "Host"
 SELECT a.FirstName, a.LastName, a.DateCreated, h.SuperHost
 -- Allows you to extract data from the tables at the same time
@@ -129,10 +135,10 @@ FROM Guest
 -- Shows the first record
 LIMIT 1;
 
--- Gives back the number of guest
+-- Returns the number of guests
 SELECT COUNT(GuestID)
 -- Rename the column
-AS NumberOfGuest
+AS NumberOfGuests
 FROM Guest;
 
 -- Select the columns of the tables "Account" and "Guest"
@@ -171,13 +177,13 @@ FROM Address
 -- Shows the five first records
 LIMIT 5;
 
--- Gives back the number of addresses
+-- Determines the number of addresses
 SELECT COUNT(*)
 -- Rename the column
 AS NumberOfAddresses
 FROM Address;
 
--- Counts the number of rows per country grouping
+-- Counts the number of rows per country
 -- Displays the column with the modified name
 -- together with the country column
 SELECT COUNT(*) AS NumberOfAddresses, Country
@@ -357,11 +363,11 @@ FROM OutdoorFacility
 -- Shows the first fifteen records
 LIMIT 15;
 
--- Gives back the number of amenities in
+-- Returns the number of amenities in
 -- the "OutdoorFacility" table
 SELECT COUNT(*)
 -- Rename the column
-AS NumberOfOutdoorFacility
+AS NumberOfOutdoorFacilities
 FROM OutdoorFacility;
 
 -- Selection of certain columns
