@@ -24,7 +24,7 @@ which indicated the type of identification used to
 verify the user´s identity
 */
 CREATE TABLE `OfficialIdentificationType` (
-  `OfficialIdentificationID` int(11) NOT NULL,
+  `OfficialIdentificationID` int(11) NOT NULL AUTO_INCREMENT,
   `OfficialIdentification` varchar(20) NOT NULL,
   PRIMARY KEY (`OfficialIdentificationID`)
 );
@@ -34,7 +34,7 @@ Creates the table named "Account",
 which records the user's information.
 */
 CREATE TABLE `Account` (
-  `AccountID` int(11) NOT NULL,
+  `AccountID` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
   `AccountEmail` varchar(50) NOT NULL,
@@ -45,6 +45,7 @@ CREATE TABLE `Account` (
   `OfficialIdentificationID` int(11) NOT NULL,
   PRIMARY KEY (`AccountID`),
   FOREIGN KEY (OfficialIdentificationID) REFERENCES OfficialIdentificationType(OfficialIdentificationID)
+      ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -53,12 +54,13 @@ which stores the name and link where the
 user's profile pictures are located.
 */
 CREATE TABLE `AccountPhoto` (
-  `AccountPhotoID` int(11) NOT NULL,
+  `AccountPhotoID` int(11) NOT NULL AUTO_INCREMENT,
   `PhotoTitle` varchar(50) NOT NULL,
   `PhotoLink` MEDIUMTEXT NOT NULL,
   `AccountID` int(11) NOT NULL,
   PRIMARY KEY (`AccountPhotoID`),
   FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+      ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -66,7 +68,7 @@ Creates the table named "Language".
 Different languages are listed in this table
 */
 CREATE TABLE `Language` (
-  `LanguageID` int(11) NOT NULL,
+  `LanguageID` int(11) NOT NULL AUTO_INCREMENT,
   `LanguageName` varchar(50) NOT NULL,
   PRIMARY KEY (`LanguageID`)
 );
@@ -79,8 +81,10 @@ CREATE TABLE `Account_Language` (
   `AccountID` int(11) NOT NULL,
   `LanguageID` int(11) NOT NULL,
   PRIMARY KEY (`AccountID`, `LanguageID`),
-  FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+  FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (LanguageID) REFERENCES Language(LanguageID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -88,7 +92,7 @@ Creates the table named "SocialNetwork",
 Different social networks are listed in this table
 */
 CREATE TABLE `SocialNetwork` (
-  `SocialNetworkID` int(11) NOT NULL,
+  `SocialNetworkID` int(11) NOT NULL AUTO_INCREMENT,
   `SocialNetwork` varchar(50) NOT NULL,
   PRIMARY KEY (`SocialNetworkID`)
 );
@@ -101,8 +105,10 @@ CREATE TABLE `Account_SocialNetwork` (
   `AccountID` int(11) NOT NULL,
   `SocialNetworkID` int(11) NOT NULL,
   PRIMARY KEY (`AccountID`, `SocialNetworkID`),
-  FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+  FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+      ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (SocialNetworkID) REFERENCES SocialNetwork(SocialNetworkID)
+      ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -110,12 +116,13 @@ Creates the table named "Host",
 who are the users who offer an accommodation.
 */
 CREATE TABLE `Host` (
-  `HostID` int(11) NOT NULL,
+  `HostID` int(11) NOT NULL AUTO_INCREMENT,
   `SuperHost` char(1) NOT NULL,
   `Commission` int(1) DEFAULT 3,
   `AccountID` int(11) NOT NULL,
   PRIMARY KEY (`HostID`),
   FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -124,12 +131,13 @@ the users who pay to use the Accommodation
 for a certain period of time.
 */
 CREATE TABLE `Guest` (
-  `GuestID` int(11) NOT NULL,
+  `GuestID` int(11) NOT NULL AUTO_INCREMENT,
   `ExperiencedGuest` char(1) NOT NULL,
-  `Commission` int(2) DEFAULT 6, ## six to twelve
+  `Commission` int(2) DEFAULT 6,
   `AccountID` int(11) NOT NULL,
   PRIMARY KEY (`GuestID`),
   FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -137,7 +145,7 @@ Creates the table named "Address".
 Records the address of the property
 */
 CREATE TABLE `Address` (
-  `AddressID` int(11) NOT NULL,
+  `AddressID` int(11) NOT NULL AUTO_INCREMENT,
   `Street` varchar(50) NOT NULL,
   `Number` varchar(20) NOT NULL,
   `City` varchar(50) NOT NULL,
@@ -151,7 +159,7 @@ Contains the information related to the
 accommodation
 */
 CREATE TABLE `Accommodation` (
-  `AccommodationID` int(11) NOT NULL,
+  `AccommodationID` int(11) NOT NULL AUTO_INCREMENT,
   `AccommodationName` varchar(50) NOT NULL,
   `MaxGuest` int(5) NOT NULL,
   `NoBedrooms` int(5) NOT NULL,
@@ -162,8 +170,10 @@ CREATE TABLE `Accommodation` (
   `HostID` int(11) NOT NULL,
   `AddressID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`),
-  FOREIGN KEY (HostID) REFERENCES Host(HostID),
+  FOREIGN KEY (HostID) REFERENCES Host(HostID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -172,15 +182,17 @@ Records reviews written by the host
 to the guest and vice versa.
 */
 CREATE TABLE `Review` (
-  `ReviewID` int(11) NOT NULL,
+  `ReviewID` int(11) NOT NULL AUTO_INCREMENT,
   `ReviewDate` Date NOT NULL,
   `ReviewFor` varchar(1) NOT NULL,
   `Review` MEDIUMTEXT NOT NULL,
   `HostID` int(11) NOT NULL,
   `GuestID` int(11) NOT NULL,
   PRIMARY KEY (`ReviewID`),
-  FOREIGN KEY (HostID) REFERENCES Host(HostID),
+  FOREIGN KEY (HostID) REFERENCES Host(HostID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (GuestID) REFERENCES Guest(GuestID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -189,7 +201,7 @@ This table lists the various amenities
 that can be found in the kitchen
 */
 CREATE TABLE `KitchenAmenity` (
-  `KitchenAmenityID` int(11) NOT NULL,
+  `KitchenAmenityID` int(11) NOT NULL AUTO_INCREMENT,
   `KitchenEquipment` varchar(60) NOT NULL,
   PRIMARY KEY (`KitchenAmenityID`)
 );
@@ -202,8 +214,10 @@ CREATE TABLE `Accommodation_KitchenAmenity` (
   `AccommodationID` int(11) NOT NULL,
   `KitchenAmenityID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `KitchenAmenityID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (KitchenAmenityID) REFERENCES KitchenAmenity(KitchenAmenityID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -213,7 +227,7 @@ in the bathroom and bedroom, and whether there
 is laundry and drying facilities
 */
 CREATE TABLE `BathBedroomLaundry` (
-  `BathBedroomLaundryID` int(11) NOT NULL,
+  `BathBedroomLaundryID` int(11) NOT NULL AUTO_INCREMENT,
   `AmenityName` varchar(60) NOT NULL,
   PRIMARY KEY (`BathBedroomLaundryID`)
 );
@@ -226,8 +240,10 @@ CREATE TABLE `Accommodation_BBLaundry` (
   `AccommodationID` int(11) NOT NULL,
   `BathBedroomLaundryID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `BathBedroomLaundryID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (BathBedroomLaundryID) REFERENCES BathBedroomLaundry(BathBedroomLaundryID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -237,7 +253,7 @@ It also mentions facilities offered by the property with
 respect to temperature regulation and parking.
 */
 CREATE TABLE `SafetyandProperty` (
-  `SafetyPropertyID` int(11) NOT NULL,
+  `SafetyPropertyID` int(11) NOT NULL AUTO_INCREMENT,
   `SafetyProperty` varchar(60) NOT NULL,
   PRIMARY KEY (`SafetyPropertyID`)
 );
@@ -250,8 +266,10 @@ CREATE TABLE `Accommodation_SafetyProperty` (
   `AccommodationID` int(11) NOT NULL,
   `SafetyPropertyID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `SafetyPropertyID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (SafetyPropertyID) REFERENCES SafetyandProperty(SafetyPropertyID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -261,7 +279,7 @@ the items or equipment for external use provided
 by the accommodation.
 */
 CREATE TABLE `OutdoorFacility` (
-  `OutdoorFacilityID` int(11) NOT NULL,
+  `OutdoorFacilityID` int(11) NOT NULL AUTO_INCREMENT,
   `OutdoorFacility` varchar(100) NOT NULL,
   PRIMARY KEY (`OutdoorFacilityID`)
 );
@@ -274,8 +292,10 @@ CREATE TABLE `Accommodation_OutdoorFacility` (
   `AccommodationID` int(11) NOT NULL,
   `OutdoorFacilityID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `OutdoorFacilityID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (OutdoorFacilityID) REFERENCES OutdoorFacility(OutdoorFacilityID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -284,7 +304,7 @@ Lists the different entertainment possibilities
 that can be found in the accommodation
 */
 CREATE TABLE `Entertainment` (
-  `EntertainmentID` int(11) NOT NULL,
+  `EntertainmentID` int(11) NOT NULL AUTO_INCREMENT,
   `Entertainment` varchar(60) NOT NULL,
   PRIMARY KEY (`EntertainmentID`)
 );
@@ -297,8 +317,10 @@ CREATE TABLE `Accommodation_Entertainment` (
   `AccommodationID` int(11) NOT NULL,
   `EntertainmentID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `EntertainmentID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (EntertainmentID) REFERENCES Entertainment(EntertainmentID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -307,7 +329,7 @@ Lists the scenic views that the guest can
 admire from the accommodation
 */
 CREATE TABLE `ScenicViews` (
-  `ScenicViewsID` int(11) NOT NULL,
+  `ScenicViewsID` int(11) NOT NULL AUTO_INCREMENT,
   `Views` varchar(20) NOT NULL,
   PRIMARY KEY (`ScenicViewsID`)
 );
@@ -320,8 +342,10 @@ CREATE TABLE `Accommodation_ScenicViews` (
   `AccommodationID` int(11) NOT NULL,
   `ScenicViewsID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `ScenicViewsID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (ScenicViewsID) REFERENCES ScenicViews(ScenicViewsID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -331,7 +355,7 @@ which must be respected by the guest
 during his/her stay.
 */
 CREATE TABLE `HouseRules` (
-  `HouseRuleID` int(11) NOT NULL,
+  `HouseRuleID` int(11) NOT NULL AUTO_INCREMENT,
   `HouseRule` varchar(80) NOT NULL,
   PRIMARY KEY (`HouseRuleID`)
 );
@@ -344,8 +368,10 @@ CREATE TABLE `Accommodation_HouseRules` (
   `AccommodationID` int(11) NOT NULL,
   `HouseRuleID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `HouseRuleID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (HouseRuleID) REFERENCES HouseRules(HouseRuleID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -353,7 +379,7 @@ Creates the table named "CancellationPolicies".
 Lists different types of cancellation policies
 */
 CREATE TABLE `CancellationPolicies` (
-  `CancellationPoliciesID` int(11) NOT NULL,
+  `CancellationPoliciesID` int(11) NOT NULL AUTO_INCREMENT,
   `CancellationPolicies` MEDIUMTEXT NOT NULL,
   PRIMARY KEY (`CancellationPoliciesID`)
 );
@@ -366,8 +392,10 @@ CREATE TABLE `Accommodation_CancellationPolicies` (
   `AccommodationID` int(11) NOT NULL,
   `CancellationPoliciesID` int(11) NOT NULL,
   PRIMARY KEY (`AccommodationID`, `CancellationPoliciesID`),
-  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID),
+  FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (CancellationPoliciesID) REFERENCES CancellationPolicies(CancellationPoliciesID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -376,12 +404,13 @@ Contains the names and links to the images of
 the different accommodations.
 */
 CREATE TABLE `AccommodationPicture` (
-  `AccomPictureID` int(11) NOT NULL,
+  `AccomPictureID` int(11) NOT NULL AUTO_INCREMENT,
   `PictureTitle` varchar(50) NOT NULL,
   `PictureLink` MEDIUMTEXT NOT NULL,
   `AccommodationID` int(11) NOT NULL,
   PRIMARY KEY (`AccomPictureID`),
   FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -389,7 +418,7 @@ Creates the table named "Reservation", which records
 the details of the reservation made by the guest.
 */
 CREATE TABLE `Reservation` (
-  `ReservationID` int(11) NOT NULL,
+  `ReservationID` int(11) NOT NULL AUTO_INCREMENT,
   `ReservationDate` Date NOT NULL,
   `ArrivalDate` Date NOT NULL,
   `DepartureDate` Date NOT NULL,
@@ -398,8 +427,10 @@ CREATE TABLE `Reservation` (
   `GuestID` int(11) NOT NULL,
   `AccommodationID` int(11) NOT NULL,
   PRIMARY KEY (`ReservationID`),
-  FOREIGN KEY (GuestID) REFERENCES Guest(GuestID),
+  FOREIGN KEY (GuestID) REFERENCES Guest(GuestID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -409,7 +440,7 @@ with one being the worst or lowest rating and
 five being the best or highest.
 */
 CREATE TABLE `AccomRating` (
-  `AccomRatingID` int(11) NOT NULL,
+  `AccomRatingID` int(11) NOT NULL AUTO_INCREMENT,
   `RaitingDate` Date NOT NULL,
   `Cleanliness` int(1) NOT NULL,
   `Accurancy` int(1) NOT NULL,
@@ -420,8 +451,10 @@ CREATE TABLE `AccomRating` (
   `GuestID` int(11) NOT NULL,
   `AccommodationID` int(11) NOT NULL,
   PRIMARY KEY (`AccomRatingID`),
-  FOREIGN KEY (GuestID) REFERENCES Guest(GuestID),
+  FOREIGN KEY (GuestID) REFERENCES Guest(GuestID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (AccommodationID) REFERENCES Accommodation(AccommodationID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -430,7 +463,7 @@ contains information about the credit card
 used by the guest to pay for their stay.
 */
 CREATE TABLE `CreditCard` (
-  `CreditCardID` int(11) NOT NULL,
+  `CreditCardID` int(11) NOT NULL AUTO_INCREMENT,
   `CreditCardNumber` bigint(50) NOT NULL,
   `ExpiredDate` Date NOT NULL,
   `BankName` varchar(25) NOT NULL,
@@ -439,6 +472,7 @@ CREATE TABLE `CreditCard` (
   `GuestID` int(11) NOT NULL,
   PRIMARY KEY (`CreditCardID`),
   FOREIGN KEY (GuestID) REFERENCES Guest(GuestID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /*
@@ -446,7 +480,7 @@ Creates the table named "Payment".Records the
 details of the guest´s payment for the stay.
 */
 CREATE TABLE `Payment` (
-  `PaymentID` int(11) NOT NULL,
+  `PaymentID` int(11) NOT NULL AUTO_INCREMENT,
   `PaymentDate` Date NOT NULL,
   `CurrentNightPrice` DECIMAL(10, 2) NOT NULL,
   `NoNights` int(11) NOT NULL,
@@ -454,6 +488,8 @@ CREATE TABLE `Payment` (
   `CreditCardID` int(11) NOT NULL,
   `ReservationID` int(11) NOT NULL,
   PRIMARY KEY (`PaymentID`),
-  FOREIGN KEY (CreditCardID) REFERENCES CreditCard(CreditCardID),
+  FOREIGN KEY (CreditCardID) REFERENCES CreditCard(CreditCardID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
