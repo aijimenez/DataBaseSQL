@@ -22,10 +22,19 @@ SHOW TABLE STATUS
 SELECT
 SUM(ROUND(((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024), 2)) AS "SizeInMB"
 FROM INFORMATION_SCHEMA.TABLES
-WHERE
-TABLE_SCHEMA = "sql_airbnb";
+WHERE TABLE_SCHEMA = "sql_airbnb";
 
 -- Provides the number of tables in the DB
 SELECT COUNT(*) AS NumberTables
 FROM information_schema.tables
 WHERE table_schema = 'sql_airbnb';
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES
+WHERE table_schema = 'sql_airbnb'
+AND table_name='Accommodation';
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES
+WHERE table_schema = 'sql_airbnb'
+AND table_name='Accommodation_KitchenAmenity';
