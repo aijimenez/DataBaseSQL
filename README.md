@@ -12,13 +12,13 @@ The database "sql_airbnb" contains information about users who wish to offer and
 
 ## Prerequisites
 * MySQL 8.0.33
-* or a database management system that supports SQL
+* A database management system that supports SQL
 
 ## Installation
 
 **Step 1: Install MySQL**  
 
-The database was developed in MySQL version 8.0.33. In order to use it, it is neccesary to [install MySQL](https://www.mysql.com/de/downloads/) or an equivalent database management system.
+The database was developed in MySQL version 8.0.33. In order to use it, it is necessary to [install MySQL](https://www.mysql.com/de/downloads/) or an equivalent database management system.
 
 **Step 2: Download SQL-Files**
 
